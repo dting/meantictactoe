@@ -1,0 +1,10 @@
+<md-grid-list md-cols="3" md-row-height="fit" md-gutter="6px" class="board">
+  <md-grid-tile ng-repeat="tile in [0,1,2,3,4,5,6,7,8]" ng-click="tileClick(tile)" class="tile">
+    <i ng-if="board[tile]" class="fa fa-lg" ng-class="board[tile] === 1 ? 'fa-times' : 'fa-circle-o'"></i>
+    <md-progress-circular
+      ng-if="status === 'waiting'"
+      class="md-accent"
+      md-mode="indeterminate">
+    </md-progress-circular>
+  </md-grid-tile>
+</md-grid-list>

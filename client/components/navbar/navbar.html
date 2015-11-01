@@ -1,0 +1,23 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button class="brand" ui-sref="main">TicTacToe</md-button>
+    <span flex></span>
+    <md-menu md-position-mode="target-right target" ng-show="isLoggedIn()">
+      <md-button ng-click="$mdOpenMenu($event)">{{ getCurrentUser().name }}</md-button>
+      <md-menu-content width="3">
+        <md-menu-item>
+          <md-button ng-click="logout()">Logout</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ui-sref="settings">Settings</md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="isAdmin()">
+          <md-button ui-sref="admin">Admin</md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+    <md-button aria-label="login" ng-click="login()" ng-if="!isLoggedIn()">
+      Login
+    </md-button>
+  </div>
+</md-toolbar>

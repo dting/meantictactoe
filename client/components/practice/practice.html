@@ -1,0 +1,15 @@
+<div id="practice" layout="column" layout-align="center center" ng-controller="PracticeCtrl" md-theme="board" layout-padding>
+
+  <md-button class="md-fab md-primary md-hue-2" ng-click="toggle()" aria-label="toggle symbols">
+    <i class="fa fa-lg" ng-class="marks.opp === 1 ? 'fa-times' : 'fa-circle-o'"></i>
+  </md-button>
+
+  <board board="board.tiles" tile-click="clickTile"></board>
+
+  <md-button class="md-fab md-primary md-hue-2" ng-click="toggle()" aria-label="toggle symbols">
+    <i class="fa fa-lg" ng-class="marks.me === 1 ? 'fa-times' : 'fa-circle-o'"></i>
+  </md-button>
+
+  <h2 class="md-subhead">Play some practice games!</h2>
+  <md-button class="md-raised md-primary" ui-sref="login" md-theme="default">Login to Find Human Opponent</md-button>
+</div>

@@ -1,0 +1,43 @@
+<section ng-controller="GameCtrl">
+  <md-progress-linear ng-if="game.pingedAt" class="md-warn" md-mode="indeterminate"></md-progress-linear>
+  <div id="game" layout="column" layout-align="center center" md-theme="board" layout-padding>
+
+    <div layout-align="space-around center" layout="column">
+      <md-button class="md-fab md-primary md-hue-2" aria-label="opponent symbol">
+        <i class="fa fa-lg"
+          ng-if="game.status"
+          ng-class="oppMark() === 1 ? 'fa-times' : 'fa-circle-o'"></i>
+      </md-button>
+
+      <board board="game.board" tile-click="clickTile" status="status"></board>
+
+      <md-button class="md-fab md-primary md-hue-2" aria-label="my symbol">
+        <i class="fa fa-lg"
+          ng-if="game.status"
+          ng-class="myMark() === 1 ? 'fa-times' : 'fa-circle-o'"></i>
+      </md-button>
+    </div>
+
+  <span md-theme="default" layout="column" layout-align="center">
+    <md-button ng-if="!game && status !== 'waiting'" ng-click="play()" class="md-raised md-primary">
+      Find Game
+    </md-button>
+
+    <md-button ng-if="status === 'waiting'" ng-click="leaveQueue()" class="md-raised md-warn">
+      Cancel
+    </md-button>
+
+    <md-button ng-if="game.status === 'playing'" ng-click="resign()" class="md-raised md-warn">
+      Resign
+    </md-button>
+    <md-button ng-if="game.status === 'playing'" ng-click="ping()" class="md-raised md-accent">
+      Ping
+    </md-button>
+
+    <md-button ng-if="game.status === 'game over'" ng-click="leaveGame()" class="md-raised md-accent">
+      Leave Game
+    </md-button>
+  </span>
+  </div>
+</section>
+

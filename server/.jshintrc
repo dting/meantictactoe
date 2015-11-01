@@ -1,0 +1,13 @@
+{
+  "node": true,
+  "esnext": true,
+  "eqeqeq": true,
+  "immed": true,
+  "latedef": "nofunc",
+  "newcap": true,
+  "noarg": true,
+  "undef": true,
+  "smarttabs": true,
+  "asi": true,
+  "debug": true
+}

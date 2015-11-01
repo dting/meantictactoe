@@ -1,0 +1,6 @@
+<md-content layout-fill id="main" class="md-hue-1" layout="column">
+  <navbar></navbar>
+  <div ng-if="!isLoggedIn()" ng-include="'components/practice/practice.html'"></div>
+  <div ng-if="isLoggedIn()" ng-include="'components/game/game.html'"></div>
+</md-content>
+
