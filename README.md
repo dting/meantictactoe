@@ -69,3 +69,4 @@ Users are joined to a socket.io room with their userId. This allows for more tha
 - Opponents are currently anonymous to the player on the front end but the userId is sent. Players names should be displayed.  
 - User Model can be updated to track win/loss/tie records. Updated whenever a game is cleaned up.  
 - Replace the GameManager with something better, probably [Redis](http://redis.io/).  
+- Add more tests! Only a small portion of the code is tested. Mainly in `/server/game`.
