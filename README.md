@@ -8,7 +8,8 @@ See demo app at [https://mean-tictactoe.herokuapp.com](https://mean-tictactoe.he
 
 ## Authentication 
 
-OAuth and local authentication strategies using passport. Facebook, Google, and Twitter oauth logins enabled. After logging in, a socket.io connection is established. This connection is authenticated using the jwt token generated when logging into the site.
+OAuth and local authentication strategies using passport. Facebook, Google, and Twitter oauth logins enabled.  
+After logging in, a socket.io connection is established. This connection is authenticated using the jwt token generated when logging into the site.
   
 ## Development and Deployment
 
@@ -24,15 +25,17 @@ For developing, a task for serving a development server with livereload and inje
  
     $ grunt serve
 
-The build (default) task minifies/uglfies the project to ready it for deployment. The buildcontrol tasks automate a couple different deployment strategies:
+The build (default) task minifies/uglfies the project to ready it for deployment. The buildcontrol tasks automate a couple different deployment strategies.
 
-    $ grunt
+**Local**
+
+The local buildcontrol task will run the code through the build pipeline and commit the generated repository to the specified branch (default: `production`) of the local repository.
+
     $ grunt buildcontrol:local
-    $ grunt buildcontrol:heroku
 
 **Heroku**
 
-There is a grunt task to deploy this application to Heroku. This requires the [heroku-toolbelt](https://toolbelt.heroku.com/). If using the development environment, the toolbelt is installed by the provisioner.
+This requires the [heroku-toolbelt](https://toolbelt.heroku.com/). If using the development environment, the toolbelt is installed by the provisioner.
 
 After logging in to Heroku with Heroku toolbelt, deploying is accomplished by:
 
@@ -63,10 +66,13 @@ The practice game is re-purposed from an old project [codepen](http://codepen.io
 
 Users are joined to a socket.io room with their userId. This allows for more than one connection for a user and the updates to be synced to all connected clients. 
 
+Some more useful info about deploying angular-fullstack apps can be found in this [discussion](https://github.com/DaftMonk/generator-angular-fullstack/issues/501). Using [forever](https://github.com/foreverjs/forever) or [pm2](https://github.com/Unitech/pm2) is suggested.   
+
 ## TODOs
 
 - Chat functionality needs to be wired to the client. The server is ready to broadcast messages to each player.  
 - Opponents are currently anonymous to the player on the front end but the userId is sent. Players names should be displayed.  
 - User Model can be updated to track win/loss/tie records. Updated whenever a game is cleaned up.  
 - Replace the GameManager with something better, probably [Redis](http://redis.io/).  
-- Add more tests! Only a small portion of the code is tested. Mainly in `/server/game`.
+- Add more tests! Only a small portion of the code is tested. Mainly in `/server/game`.  
+- Users are not removed from the queue when they disconnect. If all sockets leave the userId room, a timeout should be set to drop the user from the game queue.  
